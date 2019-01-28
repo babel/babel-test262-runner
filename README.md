@@ -2,6 +2,8 @@
 
 > NOTE: Only linux64 and darwin64 are currently supported.
 
+Run test262 tests on Node 0.10 using Babel 7 and `core-js@3`.
+
 ## Installation
 
 ```
