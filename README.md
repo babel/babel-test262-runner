@@ -23,3 +23,9 @@ node lib/run-tests [pattern]
 ```
 node lib/run-tests arrow-function
 ```
+
+If you want to run **all** the tests, run
+
+```
+node lib/run-tests I_AM_SURE
+```
