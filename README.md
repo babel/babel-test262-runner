@@ -21,5 +21,5 @@ node lib/run-tests [pattern]
 `[pattern]` must be a substring of the path of the tests to run. For example:
 
 ```
-node lib/run-tests arrow-functions
+node lib/run-tests arrow-function
 ```
