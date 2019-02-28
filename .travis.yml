@@ -9,4 +9,4 @@ install:
   - node lib/download-node
 
 script:
-  - node lib/run-tests arrow-function
+  - node lib/run-tests I_AM_SURE
