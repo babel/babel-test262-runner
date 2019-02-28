@@ -20,7 +20,6 @@
     "core-js-bundle": "^3.0.0-beta.16",
     "eshost": "^4.7.1",
     "got": "^9.6.0",
-    "nodegit": "^0.24.1",
     "progress": "^2.0.3",
     "regenerator-runtime": "^0.13.1",
     "rimraf": "^2.6.3",
