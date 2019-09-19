@@ -8,7 +8,7 @@ Run test262 tests on Node 0.10 using Babel 7 and `core-js@3`.
 
 ```
 git clone [url of this repo] --recursive --shallow-submodules
-cd babel-test262
+cd babel-test262-runner
 node lib/download-node
 ```
 
