@@ -20,14 +20,12 @@
     "core-js-bundle": "^3.2.1",
     "eshost": "^6.4.0",
     "got": "^9.6.0",
+    "make-tap-output": "^2.0.0",
     "progress": "^2.0.3",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "targz": "^1.0.1",
     "tempy": "^0.3.0",
     "test262-stream": "^1.3.0"
-  },
-  "devDependencies": {
-    "make-tap-output": "^2.0.0"
   }
 }
