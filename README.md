@@ -29,3 +29,15 @@ If you want to run **all** the tests, run
 ```
 node lib/run-tests I_AM_SURE
 ```
+
+## Download babel/babel master test262 artifact
+
+```
+node lib/download-master-artifact <optional file path>
+```
+
+## Compare results with master
+
+```
+node lib/compare-results <master artifact path> <pr artifact path>
+```
