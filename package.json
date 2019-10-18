@@ -22,12 +22,10 @@
     "got": "^9.6.0",
     "highland": "^2.13.5",
     "make-tap-output": "^2.0.0",
-    "node-fetch": "^2.6.0",
     "progress": "^2.0.3",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "tap-mocha-reporter": "^5.0.0",
-    "tap-parser": "^10.0.0",
     "targz": "^1.0.1",
     "tempy": "^0.3.0",
     "test262-stream": "^1.3.0"
