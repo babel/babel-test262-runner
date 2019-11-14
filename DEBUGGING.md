@@ -10,6 +10,13 @@ We run test262 tests using babel-test262-runner on babel monorepo. It is run on 
 
 The tests are run on the master branch or PR. They are compared with the previous master branch test results. Only the changed results are rendered in the logs and CircleCI test results output.
 
+## Debugging a failing test
+
+1. When looking at a failing test, it's probably a good idea to keep in mind that certain tests in test262 could be intermittent failures.
+2. You can run the failing test locally by running babel-test262-runner:
+   1. `node lib/run-tests <test-name>`.
+   2. Currently, you will have to use npm or yarn link to link babel to babel-test262-runner to run against a specific commit.
+
 ## Known issues/Caveats
 
 + The test262 job compares against the previous master job. While this should not cause any issue, if someone were to manually trigger the master job for a relatively older commit, it will compare againt that. The way to resolve it would be to either land a new commit on master or rerun the master branch job for the most recent commit on master.
