@@ -20,3 +20,5 @@ The tests are run on the master branch or PR. They are compared with the previou
 ## Known issues/Caveats
 
 + The test262 job compares against the previous master job. While this should not cause any issue, if someone were to manually trigger the master job for a relatively older commit, it will compare againt that. The way to resolve it would be to either land a new commit on master or rerun the master branch job for the most recent commit on master.
+
++ If there is an intermittent test, add it to [intermittent-tests.txt](https://github.com/babel/babel-test262-runner/blob/master/intermittent-tests.txt).
