@@ -1,2 +1,3 @@
 test/language/computed-property-names/basics/symbol.js default
+test/language/computed-property-names/basics/symbol.js strict mode
 test/language/computed-property-names/class/method/symbol.js default
