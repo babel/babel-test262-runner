@@ -30,6 +30,12 @@ If you want to run **all** the tests, run
 node lib/run-tests I_AM_SURE
 ```
 
+If you want to run against a local copy of babel repo (useful for debugging):
+
+```
+BABEL_PATH=../babel node lib/run-tests [pattern]
+```
+
 ## Download babel/babel master test262 artifact
 
 ```
