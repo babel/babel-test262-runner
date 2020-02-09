@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.6.0",
     "@tap-format/parser": "^0.2.1",
     "core-js-bundle": "^3.2.1",
-    "eshost": "^6.4.0",
+    "eshost": "^7.1.0",
     "got": "^9.6.0",
     "highland": "^2.13.5",
     "make-tap-output": "^2.0.0",
