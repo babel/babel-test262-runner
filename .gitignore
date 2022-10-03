@@ -1,3 +1,5 @@
+engine/
+
 node_modules/
 /.idea
 /.vscode
