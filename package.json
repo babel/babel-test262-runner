@@ -18,6 +18,7 @@
     "eshost": "^9.0.0",
     "got": "^11.8.3",
     "highland": "^2.13.5",
+    "jest-worker": "^29.1.2",
     "make-tap-output": "^2.0.0",
     "progress": "^2.0.3",
     "rimraf": "^3.0.0",
@@ -29,8 +30,6 @@
     "unzipit": "^1.4.0"
   },
   "devDependencies": {
-    "@octokit/core": "^4.0.5",
-    "jest-worker": "^29.1.2",
-    "lmdb": "^2.6.6"
+    "@octokit/core": "^4.0.5"
   }
 }
