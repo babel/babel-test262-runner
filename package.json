@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.3",
+    "@octokit/core": "^4.0.5",
     "@tap-format/parser": "^0.2.1",
     "core-js-bundle": "^3.25.3",
     "eshost": "^9.0.0",
@@ -28,8 +29,5 @@
     "tempy": "^0.3.0",
     "test262-stream": "^1.4.0",
     "unzipit": "^1.4.0"
-  },
-  "devDependencies": {
-    "@octokit/core": "^4.0.5"
   }
 }
