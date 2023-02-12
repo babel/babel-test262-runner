@@ -17,7 +17,7 @@
     "@tap-format/parser": "^0.2.1",
     "core-js-bundle": "^3.25.3",
     "eshost": "^9.0.0",
-    "got": "^11.8.3",
+    "got": "^12.5.3",
     "highland": "^2.13.5",
     "jest-worker": "^29.1.2",
     "make-tap-output": "^2.0.0",
