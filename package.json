@@ -23,6 +23,7 @@
     "got": "^11.8.3",
     "highland": "^2.13.5",
     "jest-worker": "^29.1.2",
+    "lmdb": "^3.4.0",
     "make-tap-output": "^2.0.0",
     "progress": "^2.0.3",
     "rimraf": "^3.0.0",
