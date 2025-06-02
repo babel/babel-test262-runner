@@ -18,20 +18,14 @@
     "@babel/preset-env": "^7.25.4",
     "@octokit/core": "^6.1.4",
     "@tap-format/parser": "^0.2.1",
-    "core-js-bundle": "^3.31.0",
+    "compressing": "^1.10.3",
+    "core-js-bundle": "^3.42.0",
     "eshost": "^9.0.0",
-    "got": "^11.8.3",
     "highland": "^2.13.5",
     "jest-worker": "^29.1.2",
     "lmdb": "^3.4.0",
     "make-tap-output": "^2.0.0",
-    "progress": "^2.0.3",
-    "rimraf": "^3.0.0",
     "tap-merge": "^0.3.1",
-    "tap-mocha-reporter": "^5.0.0",
-    "targz": "^1.0.1",
-    "tempy": "^0.3.0",
-    "test262-stream": "^1.4.0",
-    "unzipit": "^1.4.0"
+    "test262-stream": "^1.4.0"
   }
 }
