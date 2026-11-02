@@ -13,7 +13,6 @@
   "dependencies": {
     "@babel/core": "^7.29.6",
     "@babel/plugin-proposal-decorators": "^7.29.0",
-    "@babel/plugin-proposal-explicit-resource-management": "^7.27.4",
     "@babel/preset-env": "^7.29.0",
     "@octokit/core": "^6.1.4",
     "@tap-format/parser": "^0.2.1",
