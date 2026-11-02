@@ -6,3 +6,7 @@ test/staging/sm/JSON/parse-mega-huge-array.js default
 test/staging/sm/JSON/parse-mega-huge-array.js strict mode
 test/staging/sm/generators/iterator-next-non-object.js default
 test/staging/sm/generators/iterator-next-non-object.js strict mode
+test/language/statements/for-await-of/async-from-sync-iterator-continuation-abrupt-completion-get-constructor.js default
+test/language/statements/for-await-of/async-from-sync-iterator-continuation-abrupt-completion-get-constructor.js strict mode
+test/staging/sm/Iterator/prototype/reduce/iterator-next-return-non-object-throws.js default
+test/staging/sm/Iterator/prototype/reduce/iterator-next-return-non-object-throws.js strict mode
