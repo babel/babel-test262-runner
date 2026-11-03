@@ -1,8 +1,11 @@
 "use strict";
 
 const assert = require("node:assert/strict");
+const path = require("node:path");
 const { describe, test } = require("node:test");
+const { setTimeout: sleep } = require("node:timers/promises");
 
+const { createFakeEngine, tmpDir } = require("./helpers");
 const BabelAgent = require("../lib/run-tests/babel-agent");
 
 const CORE_JS = require.resolve("core-js-bundle");
@@ -17,6 +20,31 @@ describe("BabelAgent", () => {
   test("the runtime has its polyfills filled in", () => {
     assert.doesNotMatch(BabelAgent.runtime, /\$POLYFILLS/);
     assert.ok(BabelAgent.runtime.includes(CORE_JS));
+  });
+
+  describe("evalScript", () => {
+    function createAgent(t, engineBody) {
+      const engine = createFakeEngine(path.join(tmpDir(t), "engine"), engineBody);
+      return { engine, agent: new BabelAgent({ hostPath: engine.path }) };
+    }
+
+    test("reports an engine that exits with an error", async t => {
+      const { agent } = createAgent(t, "exit 3");
+      const { error } = await agent.evalScript("1;");
+
+      assert.equal(error.name, "EngineError");
+      assert.match(error.message, /^The engine exited with code 3/);
+    });
+
+    test("does not report an engine that it stopped itself", async t => {
+      const { agent, engine } = createAgent(t, "exec sleep 60");
+      const running = agent.evalScript("1;");
+
+      while (engine.pids().length === 0) await sleep(10);
+      await agent.stop();
+
+      assert.equal((await running).error, null);
+    });
   });
 
   describe("compile", () => {

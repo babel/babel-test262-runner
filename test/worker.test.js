@@ -183,18 +183,59 @@ describe("runTest", () => {
   });
 
   describe("engine failures", () => {
-    test(
-      "does not report an engine that fails to run the test as a success",
-      {
-        todo: "eshost ignores the exit code: anything it can't parse as an error is a success",
-      },
-      async t => {
-        setup(t, `echo "FATAL ERROR: out of memory" >&2\nexit 1`);
-        const ret = await worker.runTest(makeTest("1;"));
+    test("does not report an engine that fails as a success", async t => {
+      setup(t, `echo "FATAL ERROR: out of memory" >&2\nexit 1`);
+      const ret = await worker.runTest(makeTest("1;"));
 
-        assert.notEqual(ret.result, "success");
-      }
-    );
+      assert.equal(ret.result, "runtime error");
+      assert.equal(ret.error.name, "EngineError");
+      assert.equal(
+        ret.error.message,
+        "The engine exited with code 1: FATAL ERROR: out of memory"
+      );
+    });
+
+    test("does not report a killed engine as a success", async t => {
+      setup(t, "kill -KILL $$");
+      const ret = await worker.runTest(makeTest("1;"));
+
+      assert.equal(ret.result, "runtime error");
+      assert.equal(ret.error.name, "EngineError");
+      assert.match(ret.error.message, /^The engine was killed by SIGKILL/);
+    });
+
+    test("does not report a thrown non-error as a success", async t => {
+      setup(t);
+      const ret = await worker.runTest(makeTest(`throw "a string";`));
+
+      assert.equal(ret.result, "runtime error");
+    });
+
+    test("ignores unknown output when the engine succeeds", async t => {
+      setup(t, `echo "some warning" >&2\nexit 0`);
+      const ret = await worker.runTest(makeTest("1;"));
+
+      assert.equal(ret.result, "success");
+    });
+
+    test("does not cache engine failures", async t => {
+      const engine = setup(t, "exit 1");
+      await worker.runTest(makeTest("1;"));
+      await worker.runTest(makeTest("1;"));
+
+      assert.equal(engine.pids().length, 2);
+      assert.equal(store.size, 0);
+    });
+
+    test("caches errors thrown by the test", async t => {
+      const engine = setup(t);
+      const source = `throw new TypeError("boom");`;
+      await worker.runTest(makeTest(source));
+      const ret = await worker.runTest(makeTest(source));
+
+      assert.equal(ret.result, "runtime error");
+      assert.equal(engine.pids().length, 1);
+    });
   });
 });
 
