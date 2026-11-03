@@ -1,0 +1,23 @@
+name: Update test262 cache in babel/babel
+
+on:
+  push:
+    branches: [main]
+    # Keep in sync with the hash in the test262 cache keys of babel/babel: changing
+    # these files invalidates the cache.
+    paths:
+      - package-lock.json
+      - lib/run-tests/**
+
+permissions: {}
+
+jobs:
+  dispatch:
+    name: Dispatch update-test262-cache.yml
+    runs-on: ubuntu-latest
+    if: github.repository == 'babel/babel-test262-runner'
+    steps:
+      - name: Dispatch workflow
+        run: gh workflow run update-test262-cache.yml -R babel/babel -f branch=main
+        env:
+          GH_TOKEN: ${{ secrets.TEST262_CACHE_DISPATCH_TOKEN }}
