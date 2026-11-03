@@ -5,16 +5,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test --test-timeout=120000 \"test/**/*.test.js\""
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.29.6",
-    "@babel/plugin-proposal-decorators": "^7.29.0",
-    "@babel/plugin-proposal-explicit-resource-management": "^7.27.4",
-    "@babel/preset-env": "^7.29.0",
+    "@babel/core": "^8.1.0",
+    "@babel/plugin-proposal-decorators": "^8.0.2",
+    "@babel/preset-env": "^8.0.7",
     "@octokit/core": "^6.1.4",
     "@tap-format/parser": "^0.2.1",
     "compressing": "^1.10.5",

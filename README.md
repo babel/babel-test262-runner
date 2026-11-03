@@ -47,3 +47,14 @@ node lib/download-master-artifact <optional file path>
 ```
 node lib/compare-results <master artifact path> <pr artifact path>
 ```
+
+## Test the runner
+
+```
+npm ci
+npm test
+```
+
+This requires Node.js 21 or newer, and neither the test262 submodule nor Node.js 0.10: the tests use a small test262 fixture (`test/fixtures/test262`), and replace the engine with the current Node.js. They check the runner's logic, not how Babel's output behaves on Node.js 0.10.
+
+Tests marked as `todo` document known bugs: they are expected to fail, and they don't fail the suite.
