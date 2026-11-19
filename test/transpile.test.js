@@ -76,6 +76,20 @@ describe("transpile", () => {
       assert.equal(context.calls, 1);
     });
 
+    for (const [feature, source, isModule] of [
+      ["import-defer", 'import defer * as ns from "./x.js";', true],
+      ["import-defer", "import.defer(x);", false],
+      ["source-phase-imports", 'import source s from "./x.wasm";', true],
+      ["source-phase-imports", "import.source(x);", false],
+    ]) {
+      test(`${feature} enables \`${source}\``, () => {
+        assert.throws(() => transpile(source, { isModule }), {
+          code: "BABEL_PARSE_ERROR",
+        });
+        transpile(source, { features: [feature], isModule });
+      });
+    }
+
     test("options are not shared across different features", () => {
       transpile("@dec class A {}", { features: ["decorators"] });
       assert.throws(() => transpile("@dec class A {}", { features: [] }), {
