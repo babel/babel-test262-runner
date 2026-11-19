@@ -24,6 +24,21 @@ test("adds the decorators plugin, with the supported version", () => {
   assert.deepEqual(rest, DEFAULTS);
 });
 
+test("adds the import defer plugin", () => {
+  const [importDefer, ...rest] = getBabelPlugins(["import-defer"]);
+  assert.equal(importDefer, require("@babel/plugin-proposal-import-defer"));
+  assert.deepEqual(rest, DEFAULTS);
+});
+
+test("adds the source phase imports plugin", () => {
+  const [importSource, ...rest] = getBabelPlugins(["source-phase-imports"]);
+  assert.equal(
+    importSource,
+    require("@babel/plugin-proposal-import-wasm-source")
+  );
+  assert.deepEqual(rest, DEFAULTS);
+});
+
 test("leaves explicit resource management to preset-env", () => {
   assert.deepEqual(getBabelPlugins(["explicit-resource-management"]), DEFAULTS);
 });
