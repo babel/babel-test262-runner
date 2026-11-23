@@ -104,6 +104,12 @@ describe("prepare-chunks", () => {
     assert.deepEqual([...chunk].sort(), ALL_FILES);
   });
 
+  test("sorts the files of each chunk", () => {
+    // @babel/test262-stream emits the files in the order it finishes reading
+    // them, which changes from run to run.
+    assert.deepEqual(prepareChunks(1), [ALL_FILES]);
+  });
+
   test("creates every chunk when there are more chunks than files", () => {
     const chunks = prepareChunks(ALL_FILES.length + 2);
     assert.equal(chunks.length, ALL_FILES.length + 2);
