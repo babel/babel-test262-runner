@@ -60,11 +60,12 @@ function createRunner(t) {
   };
 }
 
-function runScript(script, args = [], { cwd = ROOT, env } = {}) {
+function runScript(script, args = [], { cwd = ROOT, env, timeout } = {}) {
   return spawnSync(process.execPath, [script, ...args], {
     cwd,
     encoding: "utf8",
     env: { ...process.env, ...env },
+    timeout,
   });
 }
 

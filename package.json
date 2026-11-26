@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-import-defer": "^8.0.1",
     "@babel/plugin-proposal-import-wasm-source": "^8.0.1",
     "@babel/preset-env": "^8.0.7",
+    "@babel/test262-stream": "^2.0.0",
     "@octokit/core": "^6.1.4",
     "@tap-format/parser": "^0.2.1",
     "compressing": "^1.10.5",
@@ -25,7 +26,6 @@
     "jest-worker": "^29.1.2",
     "lmdb": "^3.4.0",
     "make-tap-output": "^2.0.0",
-    "tap-merge": "^0.3.1",
-    "test262-stream": "^1.4.0"
+    "tap-merge": "^0.3.1"
   }
 }

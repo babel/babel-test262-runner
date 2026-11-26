@@ -227,6 +227,50 @@ describe("runTest", () => {
       assert.equal(store.size, 0);
     });
 
+    test("caches V8 running out of heap", async t => {
+      // The output of Node.js 0.10 for test/staging/sm/destructuring/array-iterator-close.js
+      const engine = setup(
+        t,
+        `echo "<--- Last few GCs --->" >&2
+echo "FATAL ERROR: CALL_AND_RETRY_0 Allocation failed - process out of memory" >&2
+kill -ABRT $$`
+      );
+      const first = await worker.runTest(makeTest("1;"));
+      const second = await worker.runTest(makeTest("1;"));
+
+      assert.equal(engine.pids().length, 1);
+      assert.equal(first.cache, "miss");
+      assert.equal(second.cache, "hit");
+      assert.equal(second.result, "runtime error");
+      assert.equal(second.error.name, "EngineError");
+      assert.match(second.error.message, /^The engine was killed by SIGABRT:/);
+    });
+
+    test("does not cache other aborts", async t => {
+      const engine = setup(
+        t,
+        `echo "FATAL ERROR: String.replace result too large" >&2\nkill -ABRT $$`
+      );
+      await worker.runTest(makeTest("1;"));
+      await worker.runTest(makeTest("1;"));
+
+      assert.equal(engine.pids().length, 2);
+      assert.equal(store.size, 0);
+    });
+
+    test("does not cache out of memory without an abort", async t => {
+      // An engine killed by the OS because the machine ran out of memory
+      const engine = setup(
+        t,
+        `echo "FATAL ERROR: CALL_AND_RETRY_0 Allocation failed - process out of memory" >&2\nkill -KILL $$`
+      );
+      await worker.runTest(makeTest("1;"));
+      await worker.runTest(makeTest("1;"));
+
+      assert.equal(engine.pids().length, 2);
+      assert.equal(store.size, 0);
+    });
+
     test("caches errors thrown by the test", async t => {
       const engine = setup(t);
       const source = `throw new TypeError("boom");`;
